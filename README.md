@@ -55,27 +55,30 @@ Customizable Quiz Experience
 </ul>
 
 <h3>API Integration</h3>
-Fetch API: Shows proficiency in making asynchronous requests to external APIs and handling responses effectively.
-Data Handling: Processes and integrates API data dynamically into the application, ensuring real-time updates and interactivity.
-User Interface Design
-Responsive Design: Ensures the application is usable across a range of devices and screen sizes.
-CSS Styling: Applies modern CSS techniques to create a visually appealing and user-friendly interface.
-Problem-Solving and Debugging
-Error Handling: Implements error handling for API requests and user interactions.
-Debugging: Utilizes debugging techniques to identify and fix issues within the application.
-Benefits
-Engaging Learning Tool: Provides an interactive and fun way to learn new information and test knowledge.
-Customizable Experience: Allows users to tailor the quiz to their interests and skill levels.
-Immediate Feedback: Enhances learning by providing instant feedback on answers.
-Skill Demonstration: Showcases a range of technical skills, from frontend development to API integration and user experience design.
-Promotion to Potential Employers
-By working on the Trivia Quiz App, I have demonstrated a comprehensive skill set that includes:
+<ul>
+<li>Fetch API: Shows proficiency in making asynchronous requests to external APIs and handling responses effectively.</li>
+<li> Data Handling: Processes and integrates API data dynamically into the application, ensuring real-time updates and interactivity.</li>
+</ul>
 
-Proficiency in React: Building complex, state-driven applications with reusable components.
-API Integration: Effectively integrating third-party APIs to enhance functionality.
-Responsive Web Design: Creating applications that work seamlessly on various devices.
-Problem-Solving: Addressing and resolving issues through debugging and error handling.
-User-Centric Design: Focusing on user experience to create intuitive and engaging interfaces.
-This project not only highlights my technical capabilities but also my commitment to creating high-quality, user-focused applications.
+<h3>User Interface Design</h3>
+<ul>
+<li>Responsive Design: Ensures the application is usable across a range of devices and screen sizes.</li>
+<li>CSS Styling: Applies modern CSS techniques to create a visually appealing and user-friendly interface.</li>
+</ul>
+
+<h3>Problem-Solving and Debugging</h3>
+<ul> 
+<li>Error Handling: Implements error handling for API requests and user interactions.</li>
+<li>Debugging: Utilizes debugging techniques to identify and fix issues within the application.</li>
+</ul>  
+
+<h2>Benefits</h2>
+<ul>
+<li>Engaging Learning Tool: Provides an interactive and fun way to learn new information and test knowledge.</li>
+<li>Customizable Experience: Allows users to tailor the quiz to their interests and skill levels.</li>
+<li>Immediate Feedback: Enhances learning by providing instant feedback on answers.</li>
+<li>Skill Demonstration: Showcases a range of technical skills, from frontend development to API integration and user experience design.</li>
+</ul>
+
 
 </h3>
