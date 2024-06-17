@@ -15,7 +15,7 @@ The Trivia Quiz App is a dynamic and engaging web-based quiz application designe
 <li>Number of Questions: Users can choose how many questions they want to answer (5, 10, 15, or 20).</li>
 </ul>
 
-<h2>Interactive Quiz Interface</h2>
+<h3>Interactive Quiz Interface</h3>
 <ul>
 <li>Immediate Feedback: Users receive instant feedback on their answers, with correct and incorrect answers highlighted.</li>
 <li>Score Tracking: The app tracks the user's score throughout the quiz.</li>
@@ -23,7 +23,7 @@ The Trivia Quiz App is a dynamic and engaging web-based quiz application designe
 <li>Game Over Screen: At the end of the quiz, users see their final score and have options to restart or quit the game.</li>
 </ul>
 
-<h2>User-Friendly Design</h2>
+<h3>User-Friendly Design</h3>
 
 <ul>
 <li>Responsive Layout: The app is designed to be responsive and works seamlessly on both desktop and mobile devices.</li>
