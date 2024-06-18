@@ -82,4 +82,9 @@
 </ul>
 
 <h3>By working on the Trivia Quiz App, I have demonstrated proficiency in React, effective API integration, responsive web design, problem-solving, and user-centric design. This project showcases my technical capabilities and commitment to creating high-quality, user-focused applications.</h3>
+
+<h2><u>Deployment</u></h2>
+
+<h3>The app is deployed on Netlify. You can view the live version here: <a href="https://react-javascript-trivia-quiz.netlify.app" target="_blank">https://react-javascript-trivia-quiz.netlify.app</a></h3>
+
 </h3>
