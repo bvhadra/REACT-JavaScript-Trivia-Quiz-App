@@ -86,6 +86,6 @@
 <h2><u>Deployment</u></h2>
 
 <h3>The app is deployed on Netlify. You can view the live version here:</h3>
-<center><h2><a href="https://react-javascript-trivia-quiz.netlify.app" target="_blank">https://react-javascript-trivia-quiz.netlify.app</a></h2></center>
+<span class="center"><h2><a href="https://react-javascript-trivia-quiz.netlify.app" target="_blank">https://react-javascript-trivia-quiz.netlify.app</a></h2></span>
 
 </h3>
