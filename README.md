@@ -3,7 +3,7 @@
 
 <h2>Overview</h2>
 
-The Trivia Quiz App is a dynamic and engaging web-based quiz application designed to test users' knowledge on various topics. Users can select categories, difficulty levels, and the number of questions they wish to attempt, making the quiz experience customizable and fun. The app keeps track of scores and provides immediate feedback, enhancing the learning experience. Built with React, the app leverages the Open Trivia Database API to fetch questions, ensuring a diverse and up-to-date quiz experience.
+<h3>The Trivia Quiz App is a dynamic and engaging web-based quiz application designed to test users' knowledge on various topics. Users can select categories, difficulty levels, and the number of questions they wish to attempt, making the quiz experience customizable and fun. The app keeps track of scores and provides immediate feedback, enhancing the learning experience. Built with React, the app leverages the Open Trivia Database API to fetch questions, ensuring a diverse and up-to-date quiz experience.</h3>
 
 <h2>Features</h2>
 
@@ -81,4 +81,5 @@ The Trivia Quiz App is a dynamic and engaging web-based quiz application designe
 <li>Skill Demonstration: Showcases a range of technical skills, from frontend development to API integration and user experience design.</li>
 </ul>
 
+<h3>By working on the Trivia Quiz App, I have demonstrated proficiency in React, effective API integration, responsive web design, problem-solving, and user-centric design. This project showcases my technical capabilities and commitment to creating high-quality, user-focused applications.</h3>
 </h3>
