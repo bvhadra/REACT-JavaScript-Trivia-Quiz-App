@@ -174,6 +174,16 @@ const App = () => {
           <Timer key={timerKey} isRunning={isTimerRunning} onTimeUp={handleTimeUp} />
         </div>
       )}
+
+      <div className="footer">
+      <p>
+        Developed by <strong>Bidhan Vhadra</strong> from <strong>Web Pulse Marketing Ltd</strong>.<br />
+        <a href="https://github.com/bvhadra" target="_blank" rel="noopener noreferrer">
+          Visit my GitHub profile
+        </a>
+      </p>
+      <p>&copy; {new Date().getFullYear()}</p>
+      </div>
     </div>
   );
 };
