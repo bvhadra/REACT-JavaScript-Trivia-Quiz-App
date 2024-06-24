@@ -1,5 +1,7 @@
+// Import React
 import React from 'react';
 
+// CategorySelect component to select a trivia category
 const CategorySelect = ({ categories, onSelect }) => {
   return (
     <div id="category-selection">

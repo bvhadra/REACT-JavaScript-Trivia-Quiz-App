@@ -10,12 +10,14 @@
 body {
   background-color: #f5f5f5;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  flex-direction: column; /* Ensures footer is at the bottom */
+  min-height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove default margin */
 }
 
+/* Main App container */
 .App {
+  flex: 1; /* Takes up remaining space above the footer */
   max-width: 600px;
   width: 90%;
   background-color: #fff;
@@ -23,6 +25,7 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
+  margin: auto; /* Center the app content horizontally */
 }
 
 h1 {
@@ -32,13 +35,32 @@ h1 {
 }
 
 #settings,
-#question-container,
-#game-over {
+#question-container
+{
   margin-top: 20px;
   margin-bottom: 20px;
   width: 60%; /* Set the container width to 50% of the screen width */
   max-width: 600px; /* Maximum width to maintain consistency */
   margin: 0 auto; /* Center the container horizontally */
+}
+
+#game-over {
+  margin-top: 180px;
+  margin-bottom: 20px;
+  width: 60%; /* Set the container width to 50% of the screen width */
+  max-width: 600px; /* Maximum width to maintain consistency */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Game Over styles */
+.game-over {
+  display: flex;
+  margin-top: 180px;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  vertical-align: middle;
+  height: 100%; /* Full height of the container */
 }
 
 #category-selection,
@@ -318,3 +340,29 @@ button:disabled {
   margin-bottom: 5px;
 }
 
+/* Footer styles */
+.footer {
+  position: fixed; /* Fixed position */
+  bottom: 0; /* At the bottom */
+  left: 0; /* Ensure it's fixed to the left */
+  width: 100%; /* Full width */
+  background-color: #dddddd; /* Light gray background */
+  border-top: 1px solid #007bff; /* Top border */
+  text-align: center; /* Centered text */
+  padding: 10px 0; /* Vertical padding */
+}
+
+.footer p {
+  margin: 5px 0; /* Vertical margin */
+  font-size: 1em; /* Slightly smaller text */
+  font-weight: 500;
+}
+
+.footer a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
