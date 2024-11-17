@@ -378,3 +378,53 @@ h3{
   gap: 30px; /* Add gap between buttons */
   justify-content: center; /* Center buttons within the container */
 }
+
+
+.game-over-container {
+  margin-top: 20px;
+}
+
+.game-over-message {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-align: center;
+}
+
+.game-over-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.play-again-button,
+.quit-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.play-again-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.play-again-button:hover {
+  background-color: #45a049;
+}
+
+.quit-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.quit-button:hover {
+  background-color: #da190b;
+}

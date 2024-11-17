@@ -6,7 +6,6 @@ import QuestionCountSelect from './components/QuestionCountSelect';
 import Question from './components/Question';
 import Timer from './components/Timer';
 import Score from './components/Score';
-import GameOver from './components/GameOver';
 import './App.css';
 
 // Main App component
@@ -23,11 +22,11 @@ const App = () => {
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [feedbackMessage, setFeedbackMessage] = useState('');
-  const [showNextButton, setShowNextButton] = useState(false);
   const [timerKey, setTimerKey] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(true);
   const [totalQuestions, setTotalQuestions] = useState(10);
 
+  // Fetch categories
   useEffect(() => {
     fetch('https://opentdb.com/api_category.php')
       .then((response) => response.json())
@@ -43,14 +42,7 @@ const App = () => {
           setQuestions(data.results);
           setCurrentQuestion(data.results[0]);
           setQuestionCount(0);
-          setScore(0);
-          setIsGameOver(false);
-          setIsAnswerSelected(false);
-          setSelectedAnswer(null);
-          setFeedbackMessage('');
-          setShowNextButton(false);
-          setTimerKey(prevKey => prevKey + 1);
-          setIsTimerRunning(true);
+          resetGameStates();
         } else {
           console.error('No questions found in the API response.');
         }
@@ -58,6 +50,16 @@ const App = () => {
       .catch((error) => {
         console.error('Error fetching questions:', error);
       });
+  };
+
+  const resetGameStates = () => {
+    setScore(0);
+    setIsGameOver(false);
+    setIsAnswerSelected(false);
+    setSelectedAnswer(null);
+    setFeedbackMessage('');
+    setTimerKey((prevKey) => prevKey + 1);
+    setIsTimerRunning(true);
   };
 
   const startGame = () => {
@@ -69,15 +71,7 @@ const App = () => {
     setDifficulty('');
     setCurrentQuestion(null);
     setQuestions([]);
-    setIsGameOver(false);
-    setScore(0);
-    setQuestionCount(0);
-    setIsAnswerSelected(false);
-    setSelectedAnswer(null);
-    setFeedbackMessage('');
-    setShowNextButton(false);
-    setTimerKey(prevKey => prevKey + 1);
-    setIsTimerRunning(true);
+    resetGameStates();
   };
 
   const handleAnswerSelection = (selectedAnswer) => {
@@ -94,7 +88,10 @@ const App = () => {
     } else {
       setFeedbackMessage(`Wrong Answer! The correct answer is: ${correctAnswer}`);
     }
-    setShowNextButton(true);
+
+    if (questionCount === totalQuestions - 1) {
+      setIsGameOver(true);
+    }
   };
 
   const handleTimeUp = () => {
@@ -102,43 +99,33 @@ const App = () => {
     setIsTimerRunning(false);
     const correctAnswer = decodeHtml(currentQuestion.correct_answer);
     setFeedbackMessage(`Time Up! The correct answer is: ${correctAnswer}`);
-    setShowNextButton(true);
-  };
 
-  const nextQuestion = () => {
-    if (questionCount < totalQuestions - 1) {
-      setQuestionCount((prevCount) => prevCount + 1);
-      setCurrentQuestion(questions[questionCount + 1]);
-      setIsAnswerSelected(false);
-      setSelectedAnswer(null);
-      setFeedbackMessage('');
-      setShowNextButton(false);
-      setTimerKey(prevKey => prevKey + 1);
-      setIsTimerRunning(true);
-    } else {
+    if (questionCount === totalQuestions - 1) {
       setIsGameOver(true);
     }
   };
 
-  const endGame = () => {
-    setIsGameOver(true);
+  const nextQuestion = () => {
+    setQuestionCount((prevCount) => prevCount + 1);
+    setCurrentQuestion(questions[questionCount + 1]);
+    setIsAnswerSelected(false);
+    setSelectedAnswer(null);
+    setFeedbackMessage('');
+    setTimerKey((prevKey) => prevKey + 1);
+    setIsTimerRunning(true);
   };
 
   const quitGame = () => {
-    if (window.confirm("Are you sure you want to quit the game?")) {
+    if (window.confirm('Are you sure you want to quit the game?')) {
       window.close();
     }
   };
 
-  if (isGameOver) {
-    return <GameOver score={score} onRestart={playAgain} onQuit={quitGame} />;
-  }
-
   return (
     <div className="App">
       <div className="header">
-       <h1>TRIVIA QUIZ APP</h1>
-       <h2>Select a category, level and number of questions!</h2>
+        <h1>TRIVIA QUIZ APP</h1>
+        <h2>Select a category, level, and number of questions!</h2>
       </div>
       <div className="content">
         {!currentQuestion && !isGameOver && (
@@ -146,14 +133,18 @@ const App = () => {
             <CategorySelect categories={categories} onSelect={setCategory} />
             <DifficultySelect onSelect={setDifficulty} />
             <QuestionCountSelect value={totalQuestions} onSelect={setTotalQuestions} />
-            <button className="start-button" onClick={startGame} disabled={!category || !difficulty}>Start Game</button>
+            <button className="start-button" onClick={startGame} disabled={!category || !difficulty}>
+              Start Game
+            </button>
           </div>
         )}
         {currentQuestion && (
           <div>
             <div className="score-question-container">
               <div className="question-number">
-                <h3>Question {questionCount + 1} of {totalQuestions}</h3>
+                <h3>
+                  Question {questionCount + 1} of {totalQuestions}
+                </h3>
               </div>
               <Score score={score} classname="score" />
             </div>
@@ -167,21 +158,37 @@ const App = () => {
             {isAnswerSelected && (
               <p
                 className={`feedback-message ${
-                  feedbackMessage.includes('Correct') ? 'feedback-correct' :
-                  feedbackMessage.includes('Wrong') ? 'feedback-wrong' :
-                  feedbackMessage.includes('Time Up') ? 'feedback-timeup' : ''
+                  feedbackMessage.includes('Correct')
+                    ? 'feedback-correct'
+                    : feedbackMessage.includes('Wrong')
+                    ? 'feedback-wrong'
+                    : 'feedback-timeup'
                 }`}
               >
                 {feedbackMessage}
               </p>
             )}
-            {isAnswerSelected && (
-              <div className="button-container">
-                {showNextButton && <button className="next-button" onClick={nextQuestion}>Next Question</button>}
-                <button onClick={endGame} className="end-game-button">Quit</button>
+            {isAnswerSelected && !isGameOver && (
+              <button className="next-button" onClick={nextQuestion}>
+                Next Question
+              </button>
+            )}
+            {isGameOver && (
+              <div className="game-over-container">
+                <p className="game-over-message">
+                  Game Over! Your final score is: {score} out of {totalQuestions}
+                </p>
+                <div className="game-over-actions">
+                  <button className="play-again-button" onClick={playAgain}>
+                    Play Again
+                  </button>
+                  <button className="quit-button" onClick={quitGame}>
+                    Quit
+                  </button>
+                </div>
               </div>
             )}
-            <Timer key={timerKey} isRunning={isTimerRunning} onTimeUp={handleTimeUp} />
+            {!isGameOver && !isAnswerSelected && <Timer key={timerKey} isRunning={isTimerRunning} onTimeUp={handleTimeUp} />}
           </div>
         )}
       </div>
@@ -189,9 +196,7 @@ const App = () => {
         <p>
           Designed & Developed by <a href="https://github.com/bvhadra" target="_blank" rel="noopener noreferrer">Bidhan Vhadra</a>
         </p>
-        <p>
-          Copyright &copy; Bidhan Vhadra {new Date().getFullYear()}.
-        </p>  
+        <p>Copyright &copy; Bidhan Vhadra {new Date().getFullYear()}.</p>
       </div>
     </div>
   );
