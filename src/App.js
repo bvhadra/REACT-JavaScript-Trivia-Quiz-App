@@ -195,7 +195,7 @@ const App = () => {
       <div className="footer">
       <p><a href="https://github.com/bvhadra/REACT-JavaScript-Trivia-Quiz-App">Trivia Quiz App</a></p>      
       <p>Designed & Developed by <a href="https://github.com/bvhadra">Bidhan Vhadra</a></p>
-      <p>Copyright &copy; {new Date().getFullYear()} Bidhan Vhadra <a href="https://github.com/bvhadra">GitHub</a></p>
+      <p>Copyright &copy; {new Date().getFullYear()} Bidhan Vhadra (<a href="https://github.com/bvhadra">GitHub</a>)</p>
 
       </div>
     </div>
