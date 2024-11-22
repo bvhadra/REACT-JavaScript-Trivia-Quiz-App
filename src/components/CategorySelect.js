@@ -1,12 +1,10 @@
-// Import React
 import React from 'react';
 
-// CategorySelect component to select a trivia category
 const CategorySelect = ({ categories, onSelect }) => {
   return (
-    <div id="category-selection">
+    <div id="category-selection" className="select-container">
       <label htmlFor="category">Category:</label>
-      <select id="category" onChange={(e) => onSelect(e.target.value)}>
+      <select id="category" onChange={(e) => onSelect(e.target.value)} className="select-element">
         <option value="">Select A Category</option>
         {categories.map((category) => (
           <option key={category.id} value={category.id}>{category.name}</option>
