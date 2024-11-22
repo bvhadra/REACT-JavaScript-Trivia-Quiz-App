@@ -7,12 +7,19 @@
   font-family: 'Roboto', sans-serif;
 }
 
-body {
+body, #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: #f5f5f5;
+  margin: 0;
+}
+
+.App {
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  margin: 0;
 }
 
 .header {
@@ -28,12 +35,18 @@ body {
   height: 85px;
 }
 
-.App {
+.main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 20px;
+  margin-top: 85px;
+  margin-bottom: 0;
+}
+
+.content {
   max-width: 600px;
   width: 90%;
   background-color: #fff;
@@ -41,9 +54,6 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 70px;
 }
 
 .header h1 {
@@ -58,18 +68,15 @@ body {
   color: #fff;
 }
 
-
 #settings,
 #question-container,
 #game-over {
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 60%;
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
 }
-
-
 
 .game-over {
   display: flex;
@@ -99,7 +106,6 @@ body {
   font-size: 1em;
 }
 
-/* Styling for Select Inputs - Categories, Difficulty, and Question Count */
 .select-container {
   display: flex;
   flex-direction: column;
@@ -114,7 +120,8 @@ label {
 
 .select-element {
   padding: 10px;
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -127,8 +134,6 @@ label {
   border-color: #007BFF;
   outline: none;
 }
-
-
 
 button {
   background-color: white;
@@ -148,7 +153,6 @@ button:disabled {
   font-size: 1.2em;
 }
 
-/* New styles for horizontal layout */
 .answers-horizontal {
   display: flex;
   flex-wrap: wrap;
@@ -183,14 +187,6 @@ button:disabled {
   color: #fff;
 }
 
-@media (max-width: 600px) {
-  .answer-button {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-/* Timer styles */
 #timer-container {
   margin-top: 20px;
 }
@@ -214,18 +210,14 @@ button:disabled {
   transition: width 1s linear;
 }
 
-/* Footer styles */
 .footer {
   background-color: #007BFF;
-  padding: 10px 0;
+  padding: 10px 0px;
   text-align: center;
-  vertical-align: middle;
-  font-size: 0.9em;
   color: #fff;
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  height: 85px;
+  height: 90px;
+  margin-top: 30px;
 }
 
 .footer p {
@@ -257,7 +249,6 @@ button:disabled {
 h2{
   font-weight: 400;
   font-size: 22px;
-  /*margin: 20px;*/
 }
 
 h3{
@@ -265,22 +256,19 @@ h3{
   font-size: 20px;
 }
 
-
 .quiz-options {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between select elements */
-  align-items: center; /* Center align the select inputs */
-  padding: 20px; /* Padding around the container */
-  border: 1px solid #ccc; /* Light border around the entire section */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f9f9f9; /* Light background for the selection area */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Button styling for Start Button */
-.start-button {
+.start-button, .next-button, .end-game-button {
   background-color: #007BFF;
   color: white;
   padding: 10px 20px;
@@ -297,37 +285,8 @@ h3{
   cursor: not-allowed;
 }
 
-.start-button:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-.next-button {
-  background-color: #007BFF;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.next-button:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-
-.end-game-button {
-  background-color: #007BFF;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
+.start-button:hover:not(:disabled),
+.next-button:hover:not(:disabled),
 .end-game-button:hover:not(:disabled) {
   background-color: #0056b3;
 }
@@ -341,44 +300,29 @@ h3{
   text-align: center;
 }
 
-.feedback-correct {
-  color: #007BFF; /* Green for correct answers */
-  background-color: #f5f5f5; /* Light green background */
-}
-
-.feedback-wrong {
-  color: #007BFF; /* Red for wrong answers */
-  background-color: #f5f5f5; /* Light red background */
-}
-
-.feedback-timeup {
-  color: #007BFF; /* Yellow for time-up feedback */
-  background-color: #f5f5f5; /* Light yellow background */
+.feedback-correct, .feedback-wrong, .feedback-timeup {
+  color: #007BFF;
+  background-color: #f5f5f5;
 }
 
 .score-question-container {
   display: flex;
-  justify-content: space-between; /* Space between the two items */
-  align-items: center; /* Align items vertically */
-  margin-bottom: 15px; /* Space below the score and question number */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.question-number {
-  font-size: 1.2em; /* Slightly larger font for the question number */
-}
-
-.score {
-  font-size: 1.2em; /* Match font size with question number */
+.question-number, .score {
+  font-size: 1.2em;
 }
 
 .button-container {
-  margin-top: 20px; /* Space above buttons */
-  display: flex; /* Align buttons horizontally */
-  flex-direction: row; /* Arrange buttons in a row */
-  gap: 30px; /* Add gap between buttons */
-  justify-content: center; /* Center buttons within the container */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
 }
-
 
 .game-over-container {
   margin-top: 20px;
@@ -427,4 +371,57 @@ h3{
 
 .quit-button:hover {
   background-color: #da190b;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .header h2 {
+    font-size: 16px;
+  }
+
+  .content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .answer-button {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .content {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .answer-button {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+}
+
+/* Desktops and Laptops */
+@media (min-width: 769px) {
+  .content {
+    max-width: 600px;
+  }
+
+  .answer-button {
+    flex: 1 1 40%;
+    max-width: 45%;
+  }
 }

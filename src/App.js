@@ -121,82 +121,84 @@ const App = () => {
     }
   };
 
+
   return (
     <div className="App">
       <div className="header">
         <h1>TRIVIA QUIZ APP</h1>
         <h2>Select a category, level, and number of questions!</h2>
       </div>
-      <div className="content">
-        {!currentQuestion && !isGameOver && (
-          <div>
-            <CategorySelect categories={categories} onSelect={setCategory} />
-            <DifficultySelect onSelect={setDifficulty} />
-            <QuestionCountSelect value={totalQuestions} onSelect={setTotalQuestions} />
-            <button className="start-button" onClick={startGame} disabled={!category || !difficulty}>
-              Start Game
-            </button>
-          </div>
-        )}
-        {currentQuestion && (
-          <div>
-            <div className="score-question-container">
-              <div className="question-number">
-                <h3>
-                  Question {questionCount + 1} of {totalQuestions}
-                </h3>
-              </div>
-              <Score score={score} classname="score" />
-            </div>
-            <Question
-              question={currentQuestion}
-              onSelectAnswer={handleAnswerSelection}
-              isAnswerSelected={isAnswerSelected}
-              selectedAnswer={selectedAnswer}
-              correctAnswer={decodeHtml(currentQuestion.correct_answer)}
-            />
-            {isAnswerSelected && (
-              <p
-                className={`feedback-message ${
-                  feedbackMessage.includes('Correct')
-                    ? 'feedback-correct'
-                    : feedbackMessage.includes('Wrong')
-                    ? 'feedback-wrong'
-                    : 'feedback-timeup'
-                }`}
-              >
-                {feedbackMessage}
-              </p>
-            )}
-            {isAnswerSelected && !isGameOver && (
-              <button className="next-button" onClick={nextQuestion}>
-                Next Question
+      <div className="main-content">
+        <div className="content">
+          {!currentQuestion && !isGameOver && (
+            <div>
+              <CategorySelect categories={categories} onSelect={setCategory} />
+              <DifficultySelect onSelect={setDifficulty} />
+              <QuestionCountSelect value={totalQuestions} onSelect={setTotalQuestions} />
+              <button className="start-button" onClick={startGame} disabled={!category || !difficulty}>
+                Start Game
               </button>
-            )}
-            {isGameOver && (
-              <div className="game-over-container">
-                <p className="game-over-message">
-                  Game Over! Your final score is: {score} out of {totalQuestions}
-                </p>
-                <div className="game-over-actions">
-                  <button className="play-again-button" onClick={playAgain}>
-                    Play Again
-                  </button>
-                  <button className="quit-button" onClick={quitGame}>
-                    Quit
-                  </button>
+            </div>
+          )}
+          {currentQuestion && (
+            <div>
+              <div className="score-question-container">
+                <div className="question-number">
+                  <h3>
+                    Question {questionCount + 1} of {totalQuestions}
+                  </h3>
                 </div>
+                <Score score={score} classname="score" />
               </div>
-            )}
-            {!isGameOver && !isAnswerSelected && <Timer key={timerKey} isRunning={isTimerRunning} onTimeUp={handleTimeUp} />}
-          </div>
-        )}
+              <Question
+                question={currentQuestion}
+                onSelectAnswer={handleAnswerSelection}
+                isAnswerSelected={isAnswerSelected}
+                selectedAnswer={selectedAnswer}
+                correctAnswer={decodeHtml(currentQuestion.correct_answer)}
+              />
+              {isAnswerSelected && (
+                <p
+                  className={`feedback-message ${
+                    feedbackMessage.includes('Correct')
+                      ? 'feedback-correct'
+                      : feedbackMessage.includes('Wrong')
+                      ? 'feedback-wrong'
+                      : 'feedback-timeup'
+                  }`}
+                >
+                  {feedbackMessage}
+                </p>
+              )}
+              {isAnswerSelected && !isGameOver && (
+                <button className="next-button" onClick={nextQuestion}>
+                  Next Question
+                </button>
+              )}
+              {isGameOver && (
+                <div className="game-over-container">
+                  <p className="game-over-message">
+                    Game Over! Your final score is: {score} out of {totalQuestions}
+                  </p>
+                  <div className="game-over-actions">
+                    <button className="play-again-button" onClick={playAgain}>
+                      Play Again
+                    </button>
+                    <button className="quit-button" onClick={quitGame}>
+                      Quit
+                    </button>
+                  </div>
+                </div>
+              )}
+              {!isGameOver && !isAnswerSelected && <Timer key={timerKey} isRunning={isTimerRunning} onTimeUp={handleTimeUp} />}
+            </div>
+          )}
+        </div>
       </div>
       <div className="footer">
-      <p><a href="https://github.com/bvhadra/REACT-JavaScript-Trivia-Quiz-App">Trivia Quiz App</a></p>      
-      <p>Designed & Developed by <a href="https://github.com/bvhadra">Bidhan Vhadra</a></p>
-      <p>Copyright &copy; {new Date().getFullYear()} Bidhan Vhadra (<a href="https://github.com/bvhadra">GitHub</a>)</p>
-
+        <p><a href="https://github.com/bvhadra/REACT-JavaScript-Trivia-Quiz-App">Trivia Quiz App</a></p>      
+        <p>Designed & Developed by <a href="https://github.com/bvhadra">Bidhan Vhadra</a></p>
+        <p>Copyright &copy; {new Date().getFullYear()} Bidhan Vhadra (<a href="https://github.com/bvhadra">GitHub</a>)</p>
       </div>
     </div>
   );
